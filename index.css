@@ -1,0 +1,163 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-image: linear-gradient(
+    to left,
+    rgba(37, 9, 147, 1),
+    rgba(26, 98, 224, 1)
+  );
+  z-index: 1000;
+}
+
+.header-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.header-title {
+  color: #fff;
+  font-size: 16px;
+  font-style: initial;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* LOGIN SECTION */
+.login-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.login-card {
+  width: 340px;
+  text-align: center;
+}
+
+/* BRAND IMAGE */
+.brand-card {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* TEXT */
+.login-subtitle {
+  font-size: 14px;
+  color: #555;
+}
+
+.login-title {
+  margin: 10px 0 20px;
+}
+
+/* FORM */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form input {
+  padding: 10px;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #1a62e8;
+}
+
+.forgot-password {
+  font-size: 13px;
+  color: #0943f1;
+  cursor: pointer;
+  text-align: right;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* BUTTON */
+.login-btn {
+  background-color: #1a62e8;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.login-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* GOOGLE INPUT */
+.google-input {
+  position: relative;
+  margin-top: 20px;
+}
+
+.google-input img {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+}
+
+.google-input input {
+  width: 100%;
+  padding: 12px 12px 12px 42px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.google-input input:hover {
+  background-color: #f8f9fa;
+}
+
+.google-input input:focus {
+  outline: none;
+  border-color: #4285f4;
+}
+
+/* SIGN UP */
+.signup-text {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.signup-link {
+  color: #0943f1;
+  cursor: pointer;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+
