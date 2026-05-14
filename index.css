@@ -6,6 +6,43 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* THEME VARIABLES */
+:root {
+  --bg-page: #f0f2f5;
+  --bg-card: #ffffff;
+  --text-primary: #111111;
+  --text-muted: #555555;
+  --input-bg: #ffffff;
+  --input-border: #cccccc;
+  --input-border-focus: #1a62e8;
+  --google-hover: #f8f9fa;
+  --toggle-bg: #e0e0e0;
+  --toggle-knob: #ffffff;
+  --error-color: #d32f2f;
+  --error-bg: #fdecea;
+}
+
+[data-theme="dark"] {
+  --bg-page: #0f0f0f;
+  --bg-card: #1e1e2e;
+  --text-primary: #e8e8e8;
+  --text-muted: #aaaaaa;
+  --input-bg: #2a2a3d;
+  --input-border: #3a3a55;
+  --input-border-focus: #4a90e2;
+  --google-hover: #2a2a3d;
+  --toggle-bg: #4a90e2;
+  --toggle-knob: #ffffff;
+  --error-color: #ef9a9a;
+  --error-bg: #3b1a1a;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
 /* HEADER */
 .header {
   position: fixed;
@@ -15,11 +52,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background-image: linear-gradient(
-    to left,
-    rgba(37, 9, 147, 1),
-    rgba(26, 98, 224, 1)
-  );
+  background-image: linear-gradient(to left, rgba(37, 9, 147, 1), rgba(26, 98, 224, 1));
   z-index: 1000;
 }
 
@@ -32,8 +65,54 @@
 .header-title {
   color: #fff;
   font-size: 16px;
-  font-style: initial;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  flex: 1;
+}
+
+/* DARK MODE TOGGLE */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.theme-toggle-label {
+  color: #fff;
+  font-size: 13px;
+  user-select: none;
+}
+
+.toggle-track {
+  width: 40px;
+  height: 22px;
+  background-color: var(--toggle-bg);
+  border-radius: 11px;
+  position: relative;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 0;
+}
+
+.toggle-track:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+.toggle-knob {
+  width: 16px;
+  height: 16px;
+  background-color: var(--toggle-knob);
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s;
+}
+
+[data-theme="dark"] .toggle-knob {
+  transform: translateX(18px);
 }
 
 /* LOGIN SECTION */
@@ -48,55 +127,125 @@
 .login-card {
   width: 340px;
   text-align: center;
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.3s;
+}
+
+[data-theme="dark"] .login-card {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 /* BRAND IMAGE */
 .brand-card {
   width: 100%;
   margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 /* TEXT */
-.login-subtitle {
-  font-size: 14px;
-  color: #555;
-}
-
 .login-title {
   margin: 10px 0 20px;
+  color: var(--text-primary);
 }
 
 /* FORM */
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 4px;
 }
 
-.login-form input {
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+/* PASSWORD WRAPPER */
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-input-wrapper input {
+  padding-right: 38px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form input[type="text"] {
+  width: 100%;
   padding: 10px;
   border-radius: 7px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border);
   font-size: 14px;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  transition: border-color 0.2s, background-color 0.3s;
 }
 
 .login-form input:focus {
   outline: none;
-  border-color: #1a62e8;
+  border-color: var(--input-border-focus);
 }
 
+.login-form input.input-error {
+  border-color: var(--error-color);
+}
+
+/* INLINE ERROR MESSAGES */
+.error-msg {
+  font-size: 12px;
+  color: var(--error-color);
+  text-align: left;
+  min-height: 16px;
+  padding: 0 2px;
+  display: none;
+}
+
+.error-msg.visible {
+  display: block;
+}
+
+/* SHOW/HIDE PASSWORD BUTTON */
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password:hover {
+  color: var(--text-primary);
+}
+
+/* FORGOT PASSWORD */
 .forgot-password {
   font-size: 13px;
   color: #0943f1;
   cursor: pointer;
   text-align: right;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .forgot-password:hover {
   text-decoration: underline;
 }
 
-/* BUTTON */
+/* LOGIN BUTTON */
 .login-btn {
   background-color: #1a62e8;
   color: #fff;
@@ -105,17 +254,66 @@
   border-radius: 5px;
   font-size: 15px;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  width: 100%;
 }
 
-.login-btn:hover {
+.login-btn:hover:not(:disabled) {
   transform: translateY(-3px);
+}
+
+.login-btn:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* LOADING SPINNER */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+
+.login-btn.loading .spinner {
+  display: block;
+}
+
+.login-btn.loading .btn-text {
+  opacity: 0.8;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* SHAKE ANIMATION */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-8px); }
+  30%       { transform: translateX(8px); }
+  45%       { transform: translateX(-6px); }
+  60%       { transform: translateX(6px); }
+  75%       { transform: translateX(-4px); }
+  90%       { transform: translateX(4px); }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
 }
 
 /* GOOGLE INPUT */
 .google-input {
   position: relative;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .google-input img {
@@ -134,10 +332,13 @@
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s;
 }
 
 .google-input input:hover {
-  background-color: #f8f9fa;
+  background-color: var(--google-hover);
 }
 
 .google-input input:focus {
@@ -149,6 +350,7 @@
 .signup-text {
   margin-top: 20px;
   font-size: 14px;
+  color: var(--text-muted);
 }
 
 .signup-link {
@@ -159,5 +361,3 @@
 .signup-link:hover {
   text-decoration: underline;
 }
-
-
