@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,37 +12,57 @@
   <header class="header">
     <img src="Griffin logo.png" alt="Griff-Tech Logo" class="header-logo" />
     <h1 class="header-title">Griff-Tech!</h1>
+
+    <div class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="theme-toggle-label" id="theme-label">Light</span>
+      <button class="toggle-track" id="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">
+        <span class="toggle-knob"></span>
+      </button>
+    </div>
   </header>
 
   <!-- LOGIN SECTION -->
   <section class="login-section">
-
-    <div class="login-card">
+    <div class="login-card" id="login-card">
 
       <img src="Griffin card.png" alt="Griff Tech Card" class="brand-card" />
-
-      <!-- <p class="login-subtitle">Please enter your details</p> -->
       <h2 class="login-title">Welcome Back</h2>
 
-      <form class="login-form">
+      <form class="login-form" id="login-form" novalidate>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter email address"
-          required
-        />
+        <!-- Email -->
+        <div class="input-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter email address"
+            autocomplete="email"
+          />
+          <span class="error-msg" id="email-error">Please enter a valid email address.</span>
+        </div>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-          required
-        />
+        <!-- Password -->
+        <div class="input-group">
+          <div class="password-input-wrapper">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+            />
+            <button type="button" class="toggle-password" id="toggle-password" aria-label="Show password"></button>
+          </div>
+          <span class="error-msg" id="password-error">Password must be at least 6 characters.</span>
+        </div>
 
         <p class="forgot-password">Forgot password?</p>
 
-        <button type="submit" class="login-btn">Login</button>
+        <button type="submit" class="login-btn" id="login-btn">
+          <span class="spinner" id="spinner"></span>
+          <span class="btn-text">Login</span>
+        </button>
 
       </form>
 
@@ -55,13 +75,13 @@
       </div>
 
       <p class="signup-text">
-        Don’t have an account?
+        Don't have an account?
         <span class="signup-link">Sign up</span>
       </p>
 
     </div>
-
   </section>
 
+  <script src="index.js"></script>
 </body>
 </html>
